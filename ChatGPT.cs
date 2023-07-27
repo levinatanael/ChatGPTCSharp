@@ -10,11 +10,13 @@ namespace ChatGPTCSharp
     {
         public OpenAIService Service { get; private set; }
 
-        //Conexão com o ChatGPT
         public ChatGPT()
         {
+            //Conexão com o ChatGPT
             Service = new OpenAIService(new OpenAiOptions()
             {
+                //Essa KEY que você irá gerar no https://platform.openai.com/
+                //Menu Personal > View API Keys > Create new secrete key
                 ApiKey = ConfigurationManager.AppSettings["ApiKeyChatGpt"]
             });
         }
@@ -48,6 +50,7 @@ namespace ChatGPTCSharp
                 Prompt = prompt,
                 N = 1,
                 Size = StaticValues.ImageStatics.Size.Size256,
+                //Neste caso, optei por receber a URL da imagem, mas existem outros tipos de retorno que você poderá utilizar
                 ResponseFormat = StaticValues.ImageStatics.ResponseFormat.Url
             }); ;
 
